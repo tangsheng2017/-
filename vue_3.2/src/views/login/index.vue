@@ -45,7 +45,6 @@ const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
       store.dispatch('user/login', form)
-      // loginApi(form).then((res) => console.log(res))
     } else {
       console.log('error submit!!')
       return false

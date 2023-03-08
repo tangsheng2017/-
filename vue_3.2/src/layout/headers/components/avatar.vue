@@ -18,7 +18,7 @@
 
 <script setup>
 // import { ref } from 'vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessageBox } from 'element-plus'
 import { useStore } from 'vuex'
 
 const store = useStore()
@@ -35,12 +35,7 @@ const logout = () => {
     .then(() => {
       store.dispatch('user/logout')
     })
-    .catch(() => {
-      ElMessage({
-        type: 'info',
-        message: '取消退出登录'
-      })
-    })
+    .catch(() => {})
 }
 </script>
 

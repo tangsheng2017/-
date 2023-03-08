@@ -4,21 +4,13 @@ import router from '@/router'
 import store from '@/store'
 import '@/styles/index.scss'
 import SvgIcon from '@/icons'
-import 'element-plus/dist/index.css'
-import '@/router/permission'
-import utils from '@/utils/index'
+import '@/router/permission' // 路由守卫
 import appComponent from '@/utils/appComponent'
-
-import 'xe-utils'
-import VXETable from 'vxe-table'
-import 'vxe-table/lib/style.css'
+import plugIn from '@/utils/plugIn'
 
 const app = createApp(App)
 
-app.provide('$utils', utils)
-
-app.use(VXETable)
-
-SvgIcon(app)
-appComponent(app)
+plugIn(app) // 各类插件注册
+SvgIcon(app) // 注册svg图标
+appComponent(app) // 注册公共组件
 app.use(store).use(router).mount('#app')

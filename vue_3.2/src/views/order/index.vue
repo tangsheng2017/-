@@ -2,16 +2,29 @@
   <div class="order">
     <CommonCard>
       <template #header>{{ $route.meta.title }}</template>
-      <CommonTable :tabelHeader="tableHeader" :tableData="tableData" />
+      <CommonTable
+        :tabelHeader="tableHeader"
+        :tableData="tableData"
+        @tableCellClick="handleTableOperation"
+        @selectionChange="selectionChange"
+      />
+      <CommonPagination :pageObj="pageObj" @paginationEvent="tablePageFun" />
     </CommonCard>
+    <editDialog ref="dialog" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-// 表格头设置
+import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router'
 import { getTableList } from '@/api/order'
+import useTableProps from '@/hooks/useTable'
+import editDialog from './dialog/editDialog.vue'
+import useDialogProps from '@/hooks/useDialog'
 
+const router = useRouter()
+
+// 表格头设置
 const tableHeader = [
   {
     type: 'checkbox',
@@ -80,22 +93,46 @@ const tableHeader = [
         status: 'primary'
       },
       {
-        name: '测试单',
+        name: '编辑',
         judeKey: 'primary',
         styleKey: 'testStyle',
-        type: 'test',
+        type: 'edit',
         status: 'success'
+      },
+      {
+        name: '删除',
+        judeKey: 'primary',
+        styleKey: 'testStyle',
+        type: 'delete',
+        status: 'danger'
       }
     ],
-    width: '180'
+    width: '220'
   }
 ]
-// 表格数据
-const tableData = ref([])
+// 筛选项
+const filter = reactive({})
+const { tablePageFun, tableData, pageObj } = useTableProps(filter, getTableList)
 
-getTableList().then((res) => {
-  tableData.value = res.data
-})
+// 弹窗ref
+const dialog = ref(null)
+const { openHooksDialog } = useDialogProps(dialog)
+
+// 点击表格按钮方法
+const handleTableOperation = (eventObj) => {
+  const type = eventObj.type
+  const data = eventObj.data
+  if (type === 'check') {
+    router.push(`/orderDetails/${data.id}`)
+  } else if (type === 'edit') {
+    openHooksDialog(eventObj)
+  }
+}
+
+// 表格多选框回调
+const selectionChange = (res) => {
+  console.log(res)
+}
 </script>
 
 <style></style>

@@ -1,11 +1,13 @@
+const path = require('path')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
+
 const AutoImport = require('unplugin-auto-import/webpack')
 const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
-const path = require('path')
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
 const webpack = require('webpack')
 module.exports = {
   configureWebpack: (config) => {
@@ -76,7 +78,7 @@ module.exports = {
         target: process.env.VUE_APP_BASE_API,
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '' //pathRewrite是使用proxy进行代理时，对请求路径进行重定向以匹配到正确的请求地址
+          '^/api': '' // pathRewrite是使用proxy进行代理时，对请求路径进行重定向以匹配到正确的请求地址
         }
       }
     }

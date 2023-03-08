@@ -6,48 +6,6 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login')
-  },
-  // 工单管理
-  {
-    path: '/',
-    component: Layout,
-    meta: {
-      title: '工单管理',
-      funcCode: 'N2',
-      icon: 'User'
-    },
-    redirect: 'orderRescue',
-    children: [
-      {
-        path: 'orderRescue',
-        name: 'OrderRescue',
-        component: () => import('@/views/order'),
-        meta: {
-          title: '救援工单',
-          funcCode: 'N2-1',
-          firstAccessibleRoute: '/orderRescue'
-        }
-      },
-      {
-        path: 'orderDetails/:id',
-        name: 'OrderDetails',
-        component: () => import('@/views/order/orderDetails'),
-        meta: {
-          title: '工单详情',
-          funcCode: 'N2-1'
-        },
-        hidden: true // 不在侧边栏显示
-      },
-      {
-        path: 'orderTimeOut',
-        name: 'OrderTimeOut',
-        component: () => import('@/views/orderTimeOut'),
-        meta: {
-          title: '工单超时',
-          funcCode: 'N2-2'
-        }
-      }
-    ]
   }
 ]
 
@@ -90,6 +48,50 @@ const asyncRoutes = [
         meta: {
           title: '工单超时',
           funcCode: 'N2-2'
+        }
+      }
+    ]
+  },
+  // 驻点管理
+  {
+    path: '/',
+    component: Layout,
+    meta: {
+      title: '驻点管理',
+      funcCode: 'N3',
+      icon: 'User'
+    },
+    redirect: 'point',
+    children: [
+      {
+        path: 'point',
+        name: 'Point',
+        component: () => import('@/views/point'),
+        meta: {
+          title: '驻点管理',
+          funcCode: 'N3_3'
+        }
+      }
+    ]
+  },
+  // 上传文件
+  {
+    path: '/',
+    component: Layout,
+    meta: {
+      title: '上传文件',
+      funcCode: 'N4',
+      icon: 'User'
+    },
+    redirect: 'upload',
+    children: [
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import('@/views/upload'),
+        meta: {
+          title: '上传文件',
+          funcCode: 'N4_3'
         }
       }
     ]

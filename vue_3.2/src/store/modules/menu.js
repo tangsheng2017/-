@@ -1,7 +1,7 @@
 import { getMenuListApi } from '@/api/menu'
 import router from '@/router'
 import lodash from 'lodash'
-import utils from '@/utils'
+import { getsessionStorage } from '@/utils/storage'
 
 export default {
   namespaced: true,
@@ -25,7 +25,7 @@ export default {
             // 菜单信息
             const resData = lodash.cloneDeep(res.data)
             const asyncRoutes = lodash.cloneDeep(router.asyncRoutes) // 深拷贝路由，防止修改原数据
-            let firstAccessibleRoute = utils.getsessionStorage('defaultActive') // 第一个路由
+            let firstAccessibleRoute = getsessionStorage('defaultActive') // 第一个路由
 
             function getMenuList(element, item) {
               item.forEach((item1) => {
@@ -49,6 +49,7 @@ export default {
                 }
               })
             }
+
             asyncRoutes.forEach((element) => {
               getMenuList(element, resData)
             })

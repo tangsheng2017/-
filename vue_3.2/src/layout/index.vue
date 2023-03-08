@@ -7,10 +7,12 @@
       class="container"
       :class="{ hidderContainer: !$store.getters.siderType }"
     >
-      <el-header><Headers /></el-header>
+      <el-header>
+        <Headers />
+      </el-header>
       <el-main>
         <router-view v-slot="{ Component }">
-          <transition name="fade-transform" mode="out-in">
+          <transition name="fade-transform">
             <component :is="Component" />
           </transition>
         </router-view>
@@ -35,10 +37,9 @@ const asideWidth = computed(() => {
 
 <style lang="scss" scoped>
 .app-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  @include relative;
 }
+
 .container {
   width: calc(100% - $sideBarWidth);
   height: 100%;
@@ -48,10 +49,12 @@ const asideWidth = computed(() => {
   right: 0;
   z-index: 9;
   transition: all 0.28s;
+
   &.hidderContainer {
     width: calc(100% - $hideSideBarWidth);
   }
 }
+
 ::v-deep(.el-header) {
   padding: 0;
 }

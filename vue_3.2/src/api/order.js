@@ -10,12 +10,3 @@ export function getTableList(data) {
     data
   })
 }
-
-// 测试单
-export function toIsTest(data) {
-  return request({
-    url: `${baseUrl}/to/is/test`,
-    method: 'post',
-    data
-  })
-}

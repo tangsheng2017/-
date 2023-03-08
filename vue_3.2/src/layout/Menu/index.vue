@@ -1,10 +1,10 @@
 <template>
   <el-menu
-    active-text-color="#ffd04b"
+    :active-text-color="variables.menuActiveText"
     :background-color="variables.menuBg"
     class="el-menu-vertical-demo"
     :default-active="defaultActive"
-    text-color="#fff"
+    :text-color="variables.menuText"
     router
     unique-opened
     :collapse="!$store.getters.siderType"
@@ -40,10 +40,11 @@
 </template>
 
 <script setup>
-import { ref, computed, inject } from 'vue'
+import { ref, computed } from 'vue'
 import variables from '@/styles/variables.scss'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
+import { setsessionStorage } from '@/utils/storage'
 
 // 获取菜单
 const store = useStore()
@@ -56,9 +57,8 @@ const route = useRoute()
 const defaultActive = ref(route.path)
 
 // 记录设置默认路由，刷新页面时返回本页面
-const $utils = inject('$utils')
 const savePath = (path) => {
-  $utils.setsessionStorage('defaultActive', `/${path}`)
+  setsessionStorage('defaultActive', `/${path}`)
 }
 </script>
 

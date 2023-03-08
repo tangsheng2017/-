@@ -1,22 +1,18 @@
 <template>
   <div class="common-card">
-    <div class="common-card__header" v-if="$slots.header || header">
-      <slot name="header">{{ header }}</slot>
+    <div class="common-card__header" v-if="$slots.header || props.header">
+      <slot name="header">{{ props.header }}</slot>
     </div>
-    <div class="common-card__body" :style="bodyStyle">
+    <div class="common-card__body" :style="props.bodyStyle">
       <slot></slot>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'ElCard',
-  props: {
-    header: {},
-    bodyStyle: {}
-  }
-}
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps(['header', 'bodyStyle'])
 </script>
 
 <style scoped>

@@ -1,16 +1,17 @@
 import { loginApi } from '@/api/user'
 import router from '@/router'
-import utils from '@/utils/index'
+import { checklocalStorage, setlocalStorage } from '@/utils/storage'
+
 export default {
   namespaced: true,
   state: () => ({
-    userData: utils.checklocalStorage('userData') // 登陆后用户信息
+    userData: checklocalStorage('userData') // 登陆后用户信息
   }),
   mutations: {
     setUserData(state, userData) {
       // 设置用户信息
       state.userData = userData
-      utils.setlocalStorage('userData', JSON.stringify(userData))
+      setlocalStorage('userData', JSON.stringify(userData))
     }
   },
   actions: {

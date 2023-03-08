@@ -1,17 +1,17 @@
 // sidebar
-$menuText: #bfcbd9;
-$menuActiveText: #ffffff;
+$menuText: #bfcbd9; // 菜单栏普通状态时的文字颜色
+$menuActiveText: #ffd04b; // 激活菜单时文字颜色
 $subMenuActiveText: #f4f4f5;
 
-$menuBg: #304156;
+$menuBg: #304156; // 菜单栏背景色
 $menuHover: #263445;
 
 $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
 
-$sideBarWidth: 210px;
-$hideSideBarWidth: 67px;
-$sideBarDuration: 0.28s;
+$sideBarWidth: 210px; // 菜单栏展开时宽度
+$hideSideBarWidth: 67px; // 菜单栏收缩时宽度
+$sideBarDuration: 0.28s; // 菜单栏动画时间
 
 
 :export {
