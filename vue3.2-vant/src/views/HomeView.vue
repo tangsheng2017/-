@@ -1,9 +1,16 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <van-button type="primary">主要按钮</van-button>
-    <van-icon name="chat-o" />
+    <van-row>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+      <van-col span="8">span: 8</van-col>
+    </van-row>
   </div>
 </template>
 
-<script></script>
+<script setup></script>
+<style lang="scss" scoped>
+div {
+  font-size: 50px;
+}
+</style>
