@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script >
+  class Star{
+	  // constructor：构造器或者构造函数是默认自带的，自己没有设置也会有，也用来接收参数
+		constructor(uname, age) {
+			// 类里面共有的属性和方法一定要加this
+			this.uname = uname
+			this.age = age
+      this.sing()
+		}
+		sing(song){
+			console.log(this.uname + song)
+    }
+  }
+	
+	let ldh = new Star('刘德华',18)
+	let zxy = new Star('张学友',20)
+  // console.log(ldh)
+  // console.log(zxy)
+
+  ldh.sing('冰雨')
+  zxy.sing('李香兰')
+</script>
+</body>
+</html>

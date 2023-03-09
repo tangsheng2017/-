@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>求和</button>
+<script >
+  class Father{
+		constructor(x, y) {
+			console.log(this) // constructor里的this指向的是创建的实例对象，也就是Father
+			this.x = x
+			this.y = y
+		}
+		sum(){
+			// 方法里的this指向的是使用者，也就是方法里的this是会变的
+			console.log(this.x + this.y)
+    }
+  }
+	class Son extends Father{
+		constructor(x, y) {
+			super(x, y); // super：调用父类的构造函数，相当于调用父类的constructor，且必须放在顶部
+			this.x = x
+			this.y = y
+		}
+		subtract(){
+			console.log(this.x - this.y)
+    }
+  }
+	let son = new Son(4,1)
+
+  son.sum()
+  son.subtract()
+</script>
+</body>
+</html>

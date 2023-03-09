@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button>求和</button>
+<script>
+  let that
+  class Star{
+		constructor(umane) {
+			that = this
+			this.uname = umane
+			this.sing() // 自己调用时this指向为自己本身
+      
+      this.btn = document.querySelector('button')
+      this.btn.onclick = this.sing
+		}
+		
+		sing(){
+			// 方法里的this指向的是使用者，也就是方法里的this是会变的
+			console.log(this.uname) // 当调用的对象是button时this指向button而不是Star，所以undefined
+
+			console.log(that.uname) // 把this存到that，这样that就是指向构造函数本身
+    }
+  }
+	
+	let ldh = new Star('刘德华')
+</script>
+</body>
+</html>
