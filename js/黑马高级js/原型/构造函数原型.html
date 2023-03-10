@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+	// 问题：当构造函数构造的时候，如果里面有function，就会不断生成新的方法占用内存，这时候把相同的方法挂载到prototype就可以公用方法
+
+	// 每个构造函数都有一个prototype属性，
+	function Star(uname, age) {
+		this.uname = uname
+		this.age = age
+	}
+
+	Star.prototype.sing = () => {
+		console.log('我会唱歌')
+	}
+
+	const ldh = new Star('刘德华', 18)
+	ldh.sing()
+	console.log(Star.prototype, 'ldh')
+	console.log(ldh.__proto__ === Star.prototype, 'ldh')
+</script>
+</body>
+</html>

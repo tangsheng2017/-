@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+	function Star(uname, age) {
+		this.uname = uname
+		this.age = age
+	}
+
+	const ldh = new Star('刘德华', 18)
+	// ldh.sex = 'ldh.sex' // 第一步，先从对象自己身上找
+	// Star.prototype.sex = 'prototype.sex' // 第二步，先从对象自己身上找
+	Object.prototype.sex = 'Object.sex' // 第三步，从对象原型上面找
+	console.log(ldh)
+</script>
+</body>
+</html>
