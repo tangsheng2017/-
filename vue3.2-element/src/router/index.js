@@ -79,7 +79,7 @@ const asyncRoutes = [
     path: '/',
     component: Layout,
     meta: {
-      title: '上传文件',
+      title: '功能',
       funcCode: 'N4',
       icon: 'User'
     },
@@ -91,6 +91,15 @@ const asyncRoutes = [
         component: () => import('@/views/upload'),
         meta: {
           title: '上传文件',
+          funcCode: 'N4_3'
+        }
+      },
+      {
+        path: 'wangEditor',
+        name: 'WangEditor',
+        component: () => import('@/views/wangEditor'),
+        meta: {
+          title: '编辑器',
           funcCode: 'N4_3'
         }
       }
